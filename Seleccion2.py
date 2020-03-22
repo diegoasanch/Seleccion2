@@ -564,7 +564,7 @@ sorteo de tareas no deseadas en Padre Coffee
 Roasters and Beer
 :)
 '''
-VERSION = '2020.3.14'
+VERSION = '2020.3.22'
 CONTACT = 'diegoasanch@gmail.com'
 
 
