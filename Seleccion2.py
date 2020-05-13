@@ -4,7 +4,7 @@ Script fot the Seleccion2 program with a tkinter GUI
 
 from tkinter import Tk, Label, Button, Frame, IntVar, Radiobutton, ttk
 from tkinter import Entry, messagebox, END, PhotoImage, LEFT
-from random import randint
+from random import choice
 from time import localtime, strftime, sleep
 
 
@@ -26,7 +26,7 @@ class ListaParaSeleccion:
         Picks a random item from self.personas
         '''
 
-        return self.personas[randint(0, len(self.personas) - 1)]
+        return choice(self.personas)
 
     def delete_last(self, event=None):
         '''
