@@ -4,7 +4,7 @@ Script fot the Seleccion2 program with a tkinter GUI
 
 from tkinter import Tk, Label, Button, Frame, IntVar, Radiobutton, ttk
 from tkinter import Entry, messagebox, END, PhotoImage, LEFT
-from random import randint
+from random import choice
 from time import localtime, strftime, sleep
 
 
@@ -25,8 +25,7 @@ class ListaParaSeleccion:
         '''
         Picks a random item from self.personas
         '''
-
-        return self.personas[randint(0, len(self.personas) - 1)]
+        return choice(self.personas)
 
     def delete_last(self, event=None):
         '''
@@ -109,13 +108,6 @@ class SetMode:
         dark_out_txt = 'white'
 
         # Palette from https://www.color-hex.com/color-palette/36646
-
-        # dark_bg = '#4b5162'
-        # dark_fg = '#5294e2'
-        # dark_btn = '#383c4a'
-        # dark_btn_txt = '#5294e2'
-        # dark_out = '#7c818c'
-        # dark_out_txt = 'white'
 
         self.bg_style = dark_bg
         self.fg_style = dark_fg
@@ -564,7 +556,7 @@ sorteo de tareas no deseadas en Padre Coffee
 Roasters and Beer
 :)
 '''
-VERSION = '2020.3.22'
+VERSION = '2020.5.13'
 CONTACT = 'diegoasanch@gmail.com'
 
 
