@@ -25,6 +25,7 @@ class ListaParaSeleccion:
         '''
         Picks a random item from self.personas
         '''
+        #prueba para git
         return choice(self.personas)
 
     def delete_last(self, event=None):
