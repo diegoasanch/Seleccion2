@@ -6,7 +6,7 @@ from tkinter import Tk, Label, Button, Frame, IntVar, Radiobutton, ttk
 from tkinter import Entry, messagebox, END, PhotoImage, LEFT
 from random import choice
 from time import localtime, strftime, sleep
-
+import os
 
 class ListaParaSeleccion:
     '''
@@ -25,7 +25,6 @@ class ListaParaSeleccion:
         '''
         Picks a random item from self.personas
         '''
-        #prueba para git
         return choice(self.personas)
 
     def delete_last(self, event=None):
@@ -89,7 +88,6 @@ class SetMode:
         '''
         Sets all output boxes
         '''
-
         for box in OUTPUT_BOXES:
             box.configure(bg=self.out_bg, fg=self.out_fg)
 
@@ -101,21 +99,12 @@ class SetMode:
 
         # Palette from https://colorhunt.co/palette/25729
 
-        dark_bg = '#222831'
-        dark_fg = '#00fff5'
-        dark_btn = '#00adb5'
-        dark_btn_txt = '#222831'
-        dark_out = '#393e46'
-        dark_out_txt = 'white'
-
-        # Palette from https://www.color-hex.com/color-palette/36646
-
-        self.bg_style = dark_bg
-        self.fg_style = dark_fg
-        self.btn_style = dark_btn
-        self.btn_text = dark_btn_txt
-        self.out_bg = dark_out
-        self.out_fg = dark_out_txt
+        self.bg_style = '#222831'
+        self.fg_style = '#00fff5'
+        self.btn_style = '#00adb5'
+        self.btn_text = '#222831'
+        self.out_bg = '#393e46'
+        self.out_fg = 'white'
 
         self.update()
 
@@ -125,19 +114,12 @@ class SetMode:
         window color mode to a light color scheme
         '''
 
-        light_bg = 'SystemButtonFace'
-        light_fg = 'black'
-        light_btn = 'SystemButtonFace'
-        light_btn_txt = 'black'
-        light_out = 'white'
-        light_out_txt = 'black'
-
-        self.bg_style = light_bg
-        self.fg_style = light_fg
-        self.btn_style = light_btn
-        self.btn_text = light_btn_txt
-        self.out_bg = light_out
-        self.out_fg = light_out_txt
+        self.bg_style = 'SystemButtonFace'
+        self.fg_style = 'black'
+        self.btn_style = 'SystemButtonFace'
+        self.btn_text = 'black'
+        self.out_bg = 'white'
+        self.out_fg = 'black'
 
         self.update()
 
@@ -483,14 +465,17 @@ submit_entry_button.grid(column=0, row=3, sticky='e', padx=100, pady=5)
 select_button = Button(TAB_SELECTION, text='Select', width=10, command=select)
 select_button.grid(column=0, row=4, padx=200, pady=5, sticky='W')
 
-try:
-    photo = PhotoImage(file='trash_can.png')
-    delete_icon = photo.subsample(13)
-    delete_button = Button(TAB_SELECTION, text='Delete', width=70, command=PARTICIPANTS_LIST.delete_last, image=delete_icon, compound=LEFT)
-except:
+trash_can_path = 'trash_can.png'
+if os.path.isfile(trash_can_path):
+    try:
+        photo = PhotoImage(file=trash_can_path)
+        delete_icon = photo.subsample(13)
+        delete_button = Button(TAB_SELECTION, text='Delete', width=70, command=PARTICIPANTS_LIST.delete_last, image=delete_icon, compound=LEFT)
+    except NameError:
+        delete_button = Button(TAB_SELECTION, text='Delete', width=10, command=PARTICIPANTS_LIST.delete_last)
+else:
     delete_button = Button(TAB_SELECTION, text='Delete', width=10, command=PARTICIPANTS_LIST.delete_last)
-finally:
-    delete_button.grid(column=0, row=4, padx=200, pady=5, sticky='E')
+delete_button.grid(column=0, row=4, padx=200, pady=5, sticky='E')
 
 
 # ---- Registry tab
@@ -557,7 +542,7 @@ sorteo de tareas no deseadas en Padre Coffee
 Roasters and Beer
 :)
 '''
-VERSION = '2020.5.13'
+VERSION = '2020.5.19'
 CONTACT = 'diegoasanch@gmail.com'
 
 
